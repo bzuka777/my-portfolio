@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bzukss | Web Developer Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">BZ<span>UKSS</span></div>
+        <ul class="nav-links">
+            <li><a href="#home" data-ka="მთავარი" data-en="Home">მთავარი</a></li>
+            <li><a href="#services" data-ka="სერვისები" data-en="Services">სერვისები</a></li>
+            <li><button id="lang-btn" class="lang-switch">🇺🇸 EN</button></li>
+            <li><a href="#contact" class="btn-nav" data-ka="კონტაქტი" data-en="Contact">კონტაქტი</a></li>
+        </ul>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <span class="badge" data-ka="ხელმისაწვდომია პროექტებისთვის" data-en="Available for projects">ხელმისაწვდომია პროექტებისთვის</span>
+            <h1 id="hero-title">ციფრული გამოცდილების <span>შექმნა</span></h1>
+            <p id="hero-desc">მე ვეხმარები ბიზნესებს თანამედროვე, სწრაფი და მაღალტექნოლოგიური ვებსაიტების აწყობაში HTML, CSS და Python-ის გამოყენებით.</p>
+            <div class="hero-btns">
+                <a href="#work" class="btn-primary" data-ka="პროექტები" data-en="Projects">პროექტები</a>
+                <a href="#services" class="btn-secondary" data-ka="რას ვთავაზობ?" data-en="What I Offer">რას ვთავაზობ?</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-code"></i>
+                <h3 data-ka="ვებ დეველოპმენტი" data-en="Web Development">ვებ დეველოპმენტი</h3>
+                <p data-ka="სუფთა და ოპტიმიზირებული კოდი HTML5-ით." data-en="Clean and optimized code with HTML5.">სუფთა და ოპტიმიზირებული კოდი HTML5-ით.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-bolt"></i>
+                <h3 data-ka="ოპტიმიზაცია" data-en="Optimization">ოპტიმიზაცია</h3>
+                <p data-ka="მაქსიმალური სისწრაფე თქვენი საიტისთვის." data-en="Maximum speed for your website.">მაქსიმალური სისწრაფე თქვენი საიტისთვის.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-mobile-alt"></i>
+                <h3 data-ka="რესპონსივი" data-en="Responsive">Responsive</h3>
+                <p data-ka="იდეალური ვიზუალი ყველა მოწყობილობაზე." data-en="Perfect visuals on all devices.">იდეალური ვიზუალი ყველა მოწყობილობაზე.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="contact-card">
+            <h2 data-ka="გაქვთ იდეა?" data-en="Have an Idea?">გაქვთ იდეა?</h2>
+            <p data-ka="მოდით, ვაქციოთ ის რეალობად." data-en="Let's turn it into reality.">მოდით, ვაქციოთ ის რეალობად.</p>
+            <div class="contact-methods">
+                <a href="mailto:bzukashvilidatuna44@gmail.com" class="btn-primary">
+                    <i class="fas fa-envelope"></i> <span data-ka="მომწერეთ მეილზე" data-en="Email Me">მომწერეთ მეილზე</span>
+                </a>
+                <div class="discord-tag">
+                    <i class="fab fa-discord"></i>
+                    <span>bzukss1</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const langBtn = document.getElementById('lang-btn');
+        let currentLang = 'ka';
+
+        const translations = {
+            ka: {
+                title: "ციფრული გამოცდილების <span>შექმნა</span>",
+                desc: "მე ვეხმარები ბიზნესებს თანამედროვე, სწრაფი და მაღალტექნოლოგიური ვებსაიტების აწყობაში HTML, CSS და Python-ის გამოყენებით."
+            },
+            en: {
+                title: "Crafting Digital <span>Experiences</span>",
+                desc: "I help businesses build modern, fast, and high-tech websites using HTML, CSS, and Python."
+            }
+        };
+
+        langBtn.addEventListener('click', () => {
+            currentLang = currentLang === 'ka' ? 'en' : 'ka';
+            langBtn.innerText = currentLang === 'ka' ? '🇺🇸 EN' : '🇬🇪 KA';
+            
+            // ვცვლით ID-ით მონიშნულ ტექსტებს
+            document.getElementById('hero-title').innerHTML = translations[currentLang].title;
+            document.getElementById('hero-desc').innerText = translations[currentLang].desc;
+
+            // ვცვლით ყველა ელემენტს, რომელსაც აქვს data-ka და data-en
+            document.querySelectorAll('[data-ka]').forEach(el => {
+                el.innerText = el.getAttribute(`data-${currentLang}`);
+            });
+        });
+    </script>
+</body>
+</html>
